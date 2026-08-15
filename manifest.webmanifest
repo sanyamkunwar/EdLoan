@@ -1,0 +1,17 @@
+{
+  "name": "Passbook - Education Loan Clarity",
+  "short_name": "Passbook",
+  "description": "Compare education loan scenarios before signing.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f3f1e8",
+  "theme_color": "#18443c",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

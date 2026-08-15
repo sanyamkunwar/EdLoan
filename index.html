@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#18443c">
+  <meta name="description" content="Compare education loan offers, stress-test repayment risk, and prepare lender questions before signing.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; base-uri 'self'; form-action 'none'">
+  <title>Passbook - Education Loan Clarity</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#calculator">Skip to calculator</a>
+  <header class="app-shell hero">
+    <nav class="topbar" aria-label="Primary">
+      <a class="brand" href="/">
+        <img src="assets/icon.svg" alt="" width="32" height="32">
+        <span>Passbook</span>
+      </a>
+      <div class="nav-actions">
+        <button class="icon-button" type="button" data-action="print" aria-label="Print or save as PDF" title="Print or save as PDF">
+          <span aria-hidden="true">PDF</span>
+        </button>
+        <button class="icon-button" type="button" data-action="share" aria-label="Share summary" title="Share summary">
+          <span aria-hidden="true">SHR</span>
+        </button>
+      </div>
+    </nav>
+    <div class="hero-grid">
+      <section class="hero-copy" aria-labelledby="page-title">
+        <p class="eyebrow">Education loan decision desk</p>
+        <h1 id="page-title">Know the monthly pressure before you sign.</h1>
+        <p>Compare Indian education loan offers, model moratorium interest, check salary strain, and walk into the bank with the right questions.</p>
+      </section>
+      <aside class="snapshot" aria-label="Current benchmark">
+        <div>
+          <span class="snapshot-label">Healthy EMI band</span>
+          <strong>&lt; 30%</strong>
+          <span>of expected take-home salary</span>
+        </div>
+        <div>
+          <span class="snapshot-label">High-risk band</span>
+          <strong>&gt; 45%</strong>
+          <span>needs a backup plan</span>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main id="calculator" class="app-shell main-grid">
+    <section class="workspace" aria-label="Loan scenarios">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Compare up to 3</p>
+          <h2>Loan Scenarios</h2>
+        </div>
+        <button class="secondary-button" type="button" data-action="add-scenario">Add Scenario</button>
+      </div>
+      <div id="scenario-list" class="scenario-list" aria-live="polite"></div>
+    </section>
+
+    <aside class="control-panel" aria-label="Planning assumptions">
+      <form id="assumption-form">
+        <div class="panel-section">
+          <h2>Planning</h2>
+          <label class="toggle-row">
+            <span>
+              <strong>Worst case</strong>
+              <small>Delay first salary and haircut income.</small>
+            </span>
+            <input id="worst-case" name="worstCase" type="checkbox">
+          </label>
+          <div class="split-fields" data-worst-case-fields hidden>
+            <label>Delay
+              <span><input id="delay-months" type="number" min="0" max="48" step="1" value="6"> mo</span>
+            </label>
+            <label>Salary cut
+              <span><input id="salary-cut" type="number" min="0" max="80" step="1" value="15">%</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="panel-section">
+          <h2>Tax</h2>
+          <label for="tax-slab">Marginal income tax slab</label>
+          <select id="tax-slab">
+            <option value="0">0%</option>
+            <option value="5" selected>5%</option>
+            <option value="20">20%</option>
+            <option value="30">30%</option>
+          </select>
+          <p class="field-note">80E benefit estimates interest deduction only. Principal repayment is not included.</p>
+        </div>
+
+        <div class="panel-section">
+          <h2>Production Integrations</h2>
+          <ul class="integration-list">
+            <li>Vidya Lakshmi / PM Vidyalaxmi application deep links</li>
+            <li>Bank rate-card ingestion with expiry dates</li>
+            <li>Document checklist and sanction-letter parser</li>
+            <li>CRM handoff for counsellor follow-up</li>
+            <li>Analytics events with no raw financial inputs</li>
+          </ul>
+        </div>
+      </form>
+    </aside>
+
+    <section class="results-band" aria-label="Results">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Decision output</p>
+          <h2>Side By Side</h2>
+        </div>
+        <button class="primary-button" type="button" data-action="calculate">Calculate</button>
+      </div>
+      <div id="results" class="results-grid" aria-live="polite"></div>
+      <div id="insights" class="insights"></div>
+    </section>
+
+    <section class="readiness-band" aria-label="Production readiness checklist">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Before launch</p>
+          <h2>Readiness Checklist</h2>
+        </div>
+      </div>
+      <div class="checklist">
+        <article>
+          <h3>Risk Controls</h3>
+          <p>All calculations run locally, inputs are validated, assumptions are visible, and financial/legal/tax claims are phrased as estimates.</p>
+        </article>
+        <article>
+          <h3>Bank Workflow</h3>
+          <p>Users can print, share, and take a bank-ready checklist covering margin money, collateral, guarantor, fees, moratorium treatment, and prepayment terms.</p>
+        </article>
+        <article>
+          <h3>Next Integrations</h3>
+          <p>Add live lender APIs or scheduled rate-card imports, PM Vidyalaxmi status tracking, counsellor CRM sync, and consented document upload.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <template id="scenario-template">
+    <article class="scenario-card">
+      <div class="scenario-header">
+        <label>
+          <span class="visually-hidden">Scenario name</span>
+          <input class="scenario-name" type="text" maxlength="28">
+        </label>
+        <button class="text-button remove-scenario" type="button">Remove</button>
+      </div>
+
+      <div class="preset-row" aria-label="Presets">
+        <select class="college-preset">
+          <option value="">Course preset</option>
+        </select>
+        <select class="lender-preset">
+          <option value="">Lender preset</option>
+        </select>
+      </div>
+      <p class="preset-note"></p>
+
+      <div class="field-grid">
+        <label>Loan amount
+          <span>Rs <input class="loan" type="number" min="0" max="20000000" step="10000"></span>
+        </label>
+        <label>Annual rate
+          <span><input class="rate" type="number" min="0" max="30" step="0.05">%</span>
+        </label>
+        <label>Course + grace
+          <span><input class="moratorium" type="number" min="0" max="96" step="1"> mo</span>
+        </label>
+        <label>Repayment
+          <span><input class="tenure" type="number" min="1" max="240" step="1"> mo</span>
+        </label>
+        <label>Salary low
+          <span>Rs <input class="salary-low" type="number" min="0" max="3000000" step="1000"></span>
+        </label>
+        <label>Salary high
+          <span>Rs <input class="salary-high" type="number" min="0" max="3000000" step="1000"></span>
+        </label>
+        <label>Monthly prepay
+          <span>Rs <input class="prepay" type="number" min="0" max="1000000" step="500"></span>
+        </label>
+        <label>Processing fee
+          <span>Rs <input class="fee" type="number" min="0" max="1000000" step="500"></span>
+        </label>
+      </div>
+
+      <label class="toggle-row compact">
+        <span>
+          <strong>Pay simple interest during moratorium</strong>
+          <small>Reduces capitalisation before EMI starts.</small>
+        </span>
+        <input class="service-interest" type="checkbox">
+      </label>
+    </article>
+  </template>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
